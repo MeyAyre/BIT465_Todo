@@ -1,5 +1,6 @@
 from django.db import models
-
+from django.utils.translation import gettext as _
+from django.core.validators import MaxLengthValidator
 
 class Todo(models.Model):
     title = models.CharField(max_length=200)
@@ -28,8 +29,16 @@ class Breed(models.Model):
     name = models.CharField(max_length=200)
     size = models.CharField(max_length=32,
        choices=STATUS,
-       default='available',)
-    friendliness = models.IntegerField()
-    trainability = models.IntegerChoices(max_length=5, choices=list(zip(range(1, 6), range(1, 6))), unique=True)
-    shedding_amount = models.IntegerChoices(max_length=5, choices=list(zip(range(1, 6), range(1, 6))), unique=True)
-    excercise_needs = models.IntegerChoices(max_length=5, choices=list(zip(range(1, 6), range(1, 6))), unique=True)
+       default='medium',)
+    friendliness = models.IntegerField(
+    choices=list(zip(range(1, 6), range(1, 6))), 
+    unique=True,)
+    trainability = models.IntegerField(
+    choices=list(zip(range(1, 6), range(1, 6))), 
+    unique=True,)
+    shedding_amount = models.IntegerField(
+    choices=list(zip(range(1, 6), range(1, 6))), 
+    unique=True,)
+    excercise_needs = models.IntegerField(
+    choices=list(zip(range(1, 6), range(1, 6))), 
+    unique=True,)
