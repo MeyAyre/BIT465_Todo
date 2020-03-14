@@ -4,8 +4,8 @@ from django.shortcuts import render
 # todos/views.py
 from rest_framework import generics
 
-from .models import Todo
-from .serializers import TodoSerializer
+from .models import Todo, Dog, Breed
+from .serializers import TodoSerializer, DogSerializer, BreedSerializer
 
 
 class ListTodo(generics.ListCreateAPIView):
@@ -18,19 +18,19 @@ class DetailTodo(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = TodoSerializer
 
 class DogList(generics.ListCreateAPIView):
-    queryset = Todo.objects.all()
-    serializer_class = TodoSerializer
+    queryset = Dog.objects.all()
+    serializer_class = DogSerializer
 
 
 class DogDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Todo.objects.all()
-    serializer_class = TodoSerializer
+    queryset = Dog.objects.all()
+    serializer_class = DogSerializer
 
 class BreedList(generics.ListCreateAPIView):
-    queryset = Todo.objects.all()
-    serializer_class = TodoSerializer
+    queryset = Breed.objects.all()
+    serializer_class = BreedSerializer
 
 
 class BreedDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Todo.objects.all()
-    serializer_class = TodoSerializer
+    queryset = Breed.objects.all()
+    serializer_class = BreedSerializer
